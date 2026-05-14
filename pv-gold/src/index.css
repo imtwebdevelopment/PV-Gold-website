@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 @theme {
   --color-primary: #00843d; /* Nature Green */
@@ -8,8 +9,6 @@
   
   --font-sans: 'Inter', 'Outfit', ui-sans-serif, system-ui, sans-serif;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   background-color: #f8faf5;

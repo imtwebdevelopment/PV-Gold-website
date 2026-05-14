@@ -5,6 +5,7 @@ import luxuryMesh from '../assets/luxury-mesh-bg.svg';
 import contactBg from '../assets/contact-card-bg.svg';
 import bgThematic from '../assets/contact-premium-new.jpg';
 import aboutBg from '../assets/about-bg-suitable.png';
+import contactSideImg from '../assets/contact-rice-macro.png';
 
 const Contact = () => (
   <section id="contact" className="py-20 px-6 md:px-12 relative overflow-hidden">
@@ -38,70 +39,62 @@ const Contact = () => (
         </motion.p>
       </div>
 
-      <div className="bg-[#061a10] rounded-[40px] md:rounded-[60px] p-6 md:p-16 text-white flex flex-col lg:flex-row gap-12 md:gap-16 relative overflow-hidden shadow-2xl border border-white/5">
-        {/* Premium Card Background Texture */}
-        <div
-          className="absolute inset-0 z-0 opacity-40 pointer-events-none"
-          style={{
-            backgroundImage: `url(${contactBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-
-        {/* Luxury Mesh Overlay */}
-        <div
-          className="absolute inset-0 z-0 opacity-10 pointer-events-none mix-blend-overlay"
-          style={{
-            backgroundImage: `url(${luxuryMesh})`,
-            backgroundSize: '300px',
-            backgroundRepeat: 'repeat'
-          }}
-        />
-
-        {/* Contact Info Column */}
-        <div className="flex-1 relative z-10 space-y-12 md:space-y-16">
-          <div>
-            <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">Visit Our Office</h3>
-            <div className="flex items-start gap-4 md:gap-6 group">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-white shrink-0">
-                <MapPin size={24} />
+      <div className="bg-[#061a10] rounded-[40px] md:rounded-[60px] text-white flex flex-col lg:flex-row relative overflow-hidden shadow-2xl border border-white/5">
+        {/* Left Side: Premium Image & Info Overlay */}
+        <div className="lg:w-1/2 relative min-h-[400px] lg:min-h-[600px]">
+          <img src={contactSideImg} alt="Contact Us" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061a10]/60 via-transparent to-transparent" />
+          
+          <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="bg-white/5 backdrop-blur-xl p-8 rounded-[30px] border border-white/10 max-w-sm"
+            >
+              <h3 className="text-2xl font-bold mb-6 tracking-tight">Visit Our Office</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shrink-0 shadow-lg shadow-primary/20">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-[10px] uppercase tracking-widest font-black mb-1">Location</p>
+                    <p className="text-sm font-bold leading-relaxed">
+                      123 Grain Valley, Nature District,<br />
+                      Sustainability Park, India
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-primary shrink-0">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-[10px] uppercase tracking-widest font-black mb-1">Direct Line</p>
+                    <p className="text-sm font-bold">+91 98765 43210</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-primary shrink-0">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-[10px] uppercase tracking-widest font-black mb-1">Support</p>
+                    <p className="text-sm font-bold truncate">hello@pvgold.com</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-gray-400 text-[10px] uppercase tracking-widest font-black mb-2">Location</p>
-                <p className="text-lg md:text-xl font-bold leading-relaxed">
-                  123 Grain Valley, Nature District,<br />
-                  Sustainability Park, India
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-8 md:space-y-10">
-            <div className="flex items-center gap-4 md:gap-6 group">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-white shrink-0">
-                <Phone size={24} />
-              </div>
-              <div>
-                <p className="text-gray-400 text-[10px] uppercase tracking-widest font-black mb-2">Direct Line</p>
-                <p className="text-xl md:text-2xl font-bold">+91 98765 43210</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 md:gap-6 group">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary transition-all group-hover:bg-primary group-hover:text-white shrink-0">
-                <Mail size={24} />
-              </div>
-              <div>
-                <p className="text-gray-400 text-[10px] uppercase tracking-widest font-black mb-2">Support</p>
-                <p className="text-xl md:text-2xl font-bold break-all">hello@pvgold.com</p>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Form Column */}
-        <div className="flex-1 relative z-10 bg-white/5 p-6 md:p-12 rounded-[30px] md:rounded-[40px] border border-white/10 backdrop-blur-xl">
+        {/* Right Side: Form Column */}
+        <div className="lg:w-1/2 relative z-10 p-8 md:p-16 flex flex-col justify-center">
+          <div className="mb-10">
+            <h3 className="text-3xl font-bold mb-2 tracking-tight">Send a Message</h3>
+            <p className="text-gray-400 text-sm font-medium">We'll get back to you within 24 hours.</p>
+          </div>
+          
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">

@@ -2,6 +2,7 @@ import React from 'react';
 import { Facebook, Instagram, Youtube } from './SocialIcons';
 import logo from '../assets/PV Gold-logo.jpeg';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -35,7 +36,7 @@ const Footer = () => {
         </div>
 
         {/* Content Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-32 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-32 relative z-10">
           <div className="space-y-6">
             <h4 className="text-primary font-black uppercase text-xs tracking-[0.3em]">Our Story</h4>
             <p className="text-gray-500 leading-relaxed text-sm font-medium">
@@ -46,47 +47,44 @@ const Footer = () => {
           <div className="space-y-6">
             <h4 className="text-primary font-black uppercase text-xs tracking-[0.3em]">Explore</h4>
             <ul className="space-y-4 text-sm text-gray-400 font-bold">
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">Premium Basmati</li>
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">Organic Grains</li>
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">Sustainability</li>
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">Gallery</li>
+              <li><Link to="/products" className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full no-underline">Premium Selection</Link></li>
+              <li><Link to="/gallery" className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full no-underline">Visual Gallery</Link></li>
+              <li><Link to="/about" className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full no-underline">Our Story</Link></li>
             </ul>
           </div>
 
           <div className="space-y-6">
             <h4 className="text-primary font-black uppercase text-xs tracking-[0.3em]">Company</h4>
             <ul className="space-y-4 text-sm text-gray-400 font-bold">
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">About Us</li>
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">Contact Support</li>
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">Privacy Policy</li>
-              <li className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full">Terms of Use</li>
+              <li><Link to="/about" className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full no-underline">About Us</Link></li>
+              <li><Link to="/contact" className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full no-underline">Contact Support</Link></li>
+              <li><Link to="/privacy" className="hover:text-primary cursor-pointer transition-all hover:translate-x-1 inline-block w-full no-underline">Privacy Policy</Link></li>
             </ul>
           </div>
 
-          <div className="space-y-6">
-            <h4 className="text-primary font-black uppercase text-xs tracking-[0.3em]">Newsletter</h4>
-            <p className="text-gray-500 text-sm font-medium">Join our harvest mailing list for seasonal recipes and exclusive offers.</p>
-            <div className="flex gap-2 p-1 bg-gray-50 rounded-2xl border border-gray-100">
-              <input type="email" placeholder="Your email" className="bg-transparent px-4 py-3 outline-none text-sm w-full font-medium" />
-              <button className="bg-primary text-white px-6 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-nature-dark transition-all">Join</button>
-            </div>
-          </div>
         </div>
 
-        {/* Large Visual Icons (Matching Screenshot Aesthetic) */}
-        <div className="flex justify-center items-end gap-6 md:gap-16 opacity-[0.1] pointer-events-none select-none -mb-8 overflow-hidden">
-          <Facebook className="w-24 h-24 md:w-48 md:h-48 text-primary" strokeWidth={0.8} />
-          <Instagram className="w-24 h-24 md:w-48 md:h-48 text-primary" strokeWidth={0.8} />
-          <Youtube className="w-24 h-24 md:w-48 md:h-48 text-primary" strokeWidth={0.8} />
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto pt-12 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-300">
-          <span className="hover:text-primary cursor-pointer">Facebook</span>
-          <span className="hover:text-primary cursor-pointer">Instagram</span>
-          <span className="hover:text-primary cursor-pointer">Youtube</span>
-          <span className="hover:text-primary cursor-pointer">Twitter</span>
+        <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+          <a href="#" className="flex items-center gap-2 hover:text-[#1877F2] transition-colors group">
+            <Facebook size={14} className="group-hover:scale-110 transition-transform" /> Facebook
+          </a>
+          <a href="#" className="flex items-center gap-2 hover:text-[#E4405F] transition-colors group">
+            <Instagram size={14} className="group-hover:scale-110 transition-transform" /> Instagram
+          </a>
+          <a href="#" className="flex items-center gap-2 hover:text-[#FF0000] transition-colors group">
+            <Youtube size={14} className="group-hover:scale-110 transition-transform" /> Youtube
+          </a>
+          <a href="#" className="flex items-center gap-2 hover:text-[#1DA1F2] transition-colors group">
+             <div className="w-3.5 h-3.5 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full group-hover:scale-110 transition-transform">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+             </div>
+             Twitter
+          </a>
         </div>
         <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-300">
           DESIGNED BY PV INNOMATRICS TECHNOLOGIES

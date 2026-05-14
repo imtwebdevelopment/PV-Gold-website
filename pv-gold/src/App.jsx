@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
+import ScrollToTop from './components/ScrollToTop';
 
 // Pages
 import Home from './pages/Home';
@@ -16,6 +17,7 @@ import './index.css';
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <div className="bg-nature-bg min-h-screen text-nature-dark selection:bg-primary/20">
         <Navbar />
         

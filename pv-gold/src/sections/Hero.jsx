@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import heroRice from '../assets/hero-rice.png';
@@ -37,10 +38,10 @@ const Hero = () => (
         </h1>
 
         <div className="flex flex-col md:flex-row gap-12 items-start md:items-center">
-          <button className="terra-btn text-lg group">
+          <Link to="/products" className="terra-btn text-lg group no-underline">
             Explore Now
             <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
+          </Link>
           
           <p className="text-sm md:text-base opacity-70 max-w-xs leading-relaxed font-medium">
             Discover our premium hand-selected grains for daily nourishment and pure life energy.
