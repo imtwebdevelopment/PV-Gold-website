@@ -54,12 +54,16 @@ const About = () => (
 
         {/* Main Heading */}
         <h2 className="text-4xl md:text-6xl font-black text-[#111111] leading-[1.1] tracking-tighter">
-          We Ensure Healthy & High-Quality Grains
+          PV Gold – Pure Grain, Pure Life
         </h2>
 
         {/* Description Text */}
         <p className="text-gray-500 font-medium leading-relaxed">
-          It is a long established fact that our rigorous selection process ensures that every grain meeting your table is a testament to purity, traditional harvest wisdom, and modern safety standards. We bring you the world's most premium basmati rice, nurtured by nature and delivered with absolute purity.
+          PV Gold – Pure Grain, Pure Life is a trusted wholesaler and retailer of everyday staples, specializing in premium flours (atta/maida), sooji. We source directly from reliable mills and growers, ensuring consistent quality, clean processing, and competitive pricing. Our product range serves families, kirana stores, supermarkets, HORECA, and bulk buyers, with pack sizes from consumer pouches to wholesale sacks. With streamlined procurement, hygienic packaging, and on-time delivery.
+        </p>
+
+        <p className="text-gray-500 font-medium leading-relaxed">
+          PV Gold focuses on freshness, nutrition, and value. Guided by a “Pure Grain, Pure Life” promise, we provide transparent specifications, responsive customer support, and steady supply—helping partners and households stock better, eat better, and live better.
         </p>
 
         {/* Features Row */}
@@ -67,20 +71,20 @@ const About = () => (
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-full bg-[#E02B2B]/10 flex items-center justify-center shrink-0">
                <span className="text-xl">🌾</span>
-            </div>
+             </div>
             <div>
-              <h4 className="font-bold text-[#111111] text-sm mb-1 uppercase tracking-wider">Super Quality Grain</h4>
-              <p className="text-xs text-gray-500">Served with purity & good health</p>
+              <h4 className="font-bold text-[#111111] text-sm mb-1 uppercase tracking-wider">Direct Sourcing</h4>
+              <p className="text-xs text-gray-500">Mills & growers ensuring quality</p>
             </div>
           </div>
           
           <div className="flex items-start gap-4">
             <div className="w-10 h-10 rounded-full bg-[#FFB800]/20 flex items-center justify-center shrink-0">
-               <span className="text-xl">👨‍🌾</span>
-            </div>
+               <span className="text-xl">📦</span>
+             </div>
             <div>
-              <h4 className="font-bold text-[#111111] text-sm mb-1 uppercase tracking-wider">Qualified Farmers</h4>
-              <p className="text-xs text-gray-500">Harvested with care & expertise</p>
+              <h4 className="font-bold text-[#111111] text-sm mb-1 uppercase tracking-wider">Hygienic Packaging</h4>
+              <p className="text-xs text-gray-500">Freshness, nutrition, and value</p>
             </div>
           </div>
         </div>

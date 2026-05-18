@@ -9,7 +9,79 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
   // Static product contents/facts based on product name
   const getProductContents = (productName) => {
     const nameLower = productName.toLowerCase();
-    if (nameLower.includes("basmati")) {
+    if (nameLower.includes("rice flour")) {
+      return {
+        origin: "Karnataka, India",
+        type: "Pure Ground Rice Flour",
+        protein: "6.0g",
+        carbs: "80g",
+        fiber: "2.4g",
+        fat: "1.4g"
+      };
+    } else if (nameLower.includes("ragi")) {
+      return {
+        origin: "Karnataka, India",
+        type: "Nutritious Finger Millet Flour",
+        protein: "7.3g",
+        carbs: "72g",
+        fiber: "11.5g",
+        fat: "1.3g"
+      };
+    } else if (nameLower.includes("maida")) {
+      return {
+        origin: "Karnataka, India",
+        type: "Premium Refined Wheat Flour",
+        protein: "10.3g",
+        carbs: "74g",
+        fiber: "2.7g",
+        fat: "1.0g"
+      };
+    } else if (nameLower.includes("bangalore")) {
+      return {
+        origin: "Karnataka, India",
+        type: "Premium Bangalore Semolina",
+        protein: "11.5g",
+        carbs: "74g",
+        fiber: "3.9g",
+        fat: "1.0g"
+      };
+    } else if (nameLower.includes("bansi") || nameLower.includes("rava") || nameLower.includes("rawa")) {
+      return {
+        origin: "Karnataka, India",
+        type: "Premium Hard Wheat Semolina",
+        protein: "12.0g",
+        carbs: "73g",
+        fiber: "3.9g",
+        fat: "1.1g"
+      };
+    } else if (nameLower.includes("gram") || nameLower.includes("besan")) {
+      return {
+        origin: "Karnataka, India",
+        type: "Pure Chickpea Flour",
+        protein: "22.4g",
+        carbs: "58g",
+        fiber: "10.8g",
+        fat: "5.0g"
+      };
+    } else if (nameLower.includes("avalakki") || nameLower.includes("poha")) {
+      return {
+        origin: "Karnataka, India",
+        type: "Premium Flattened Rice",
+        protein: "6.6g",
+        carbs: "77g",
+        fiber: "0.7g",
+        fat: "1.2g"
+      };
+    } else if (nameLower.includes("chakki") || nameLower.includes("atta") || nameLower.includes("wheat flour")) {
+      return {
+        origin: "Karnataka, India",
+        type: "100% Whole Wheat Stoneground",
+        protein: "12.0g",
+        carbs: "72g",
+        fiber: "11.2g",
+        fat: "1.8g"
+      };
+    } else if (nameLower.includes("basmati")) {
       return {
         origin: "Himalayan Foothills",
         type: "Premium Long Grain (Aged)",

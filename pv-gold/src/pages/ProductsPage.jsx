@@ -5,23 +5,29 @@ import ProductCard from '../components/ProductCard';
 
 // Assets
 import productsBg from '../assets/product-bg-suitable.png';
-import imgBasmati from '../assets/product-basmati.jpg';
-import imgBrownRice from '../assets/product-brown-rice.jpg';
-import imgToorDal from '../assets/product-toor-dal.jpg';
-import imgSonaMasuri from '../assets/product-sona-masuri.jpg';
-import imgWheatFlour from '../assets/product-wheat-flour.jpg';
+import imgRiceFlour from '../assets/product-rice-flour.png';
+import imgRagiFlour from '../assets/product-ragi-flour.png';
+import imgMaidaFlour from '../assets/product-maida.png';
+import imgBansiRava from '../assets/product-bansi-rawa.png';
+import imgGramFlour from '../assets/product-gram-flour.png';
+import imgBangaloreRawa from '../assets/product-bengaluru-rawa.png';
+import imgAvalakki from '../assets/product-avalakki.png';
+import imgWheatFlour from '../assets/product-chakki-fresh-atta.png';
 
 const products = [
-  { id: 1, name: "Premium Basmati Rice", category: "Rice", price: "750", weight: "5KG", image: imgBasmati, bestSeller: true },
-  { id: 2, name: "Traditional Brown Rice", category: "Rice", price: "320", weight: "2KG", image: imgBrownRice },
-  { id: 3, name: "Organic Toor Dal", category: "Lentils", price: "180", weight: "1KG", image: imgToorDal, bestSeller: true },
-  { id: 4, name: "Super Sona Masuri", category: "Rice", price: "1450", weight: "25KG", image: imgSonaMasuri },
-  { id: 5, name: "Golden Wheat Flour", category: "Flours", price: "450", weight: "10KG", image: imgWheatFlour, bestSeller: true },
+  { id: 1, name: "Rice Flour", category: "Flours", price: "60", weight: "1KG", image: imgRiceFlour, bestSeller: true },
+  { id: 2, name: "Ragi Flour", category: "Flours", price: "75", weight: "1KG", image: imgRagiFlour, bestSeller: true },
+  { id: 3, name: "Maida Flour", category: "Flours", price: "35 - 70", weight: "500G | 1KG", image: imgMaidaFlour },
+  { id: 4, name: "Bansi Rava", category: "Rawa", price: "40 - 80", weight: "500G | 1KG", image: imgBansiRava },
+  { id: 5, name: "Gram Flour", category: "Flours", price: "40 - 80", weight: "500G | 1KG", image: imgGramFlour, bestSeller: true },
+  { id: 6, name: "Bangalore Rawa", category: "Rawa", price: "45 - 90", weight: "500G | 1KG", image: imgBangaloreRawa },
+  { id: 7, name: "Avalakki", category: "Grains", price: "50 - 100", weight: "500G | 1KG", image: imgAvalakki },
+  { id: 8, name: "Wheat Flour", category: "Flours", price: "65 - 320", weight: "1KG | 5KG", image: imgWheatFlour, bestSeller: true }
 ];
 
 const ProductsPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const categories = ["All", "Rice", "Lentils", "Flours"];
+  const categories = ["All", "Flours", "Rawa", "Grains"];
 
   const filteredProducts = activeCategory === "All" 
     ? products 
@@ -39,7 +45,7 @@ const ProductsPage = () => {
         <div className="text-center mb-16 md:mb-24">
            <h1 className="text-4xl md:text-7xl font-black tracking-tighter leading-none mb-10 md:mb-12 uppercase">
              Our <span className="text-black/30">Premium</span> <br />
-             Grain <span className="text-primary">Selection</span>
+             Product <span className="text-primary">Selection</span>
            </h1>
            <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto font-medium leading-relaxed px-4">
              Discover our earth-based collections, nurtured for daily balance and clean energy. From the heart of nature to your table.
