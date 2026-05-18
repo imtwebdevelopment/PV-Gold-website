@@ -19,30 +19,31 @@ const Products = () => {
   ];
 
   return (
-    <section id="products" className="relative py-20 px-6 md:px-12 overflow-hidden bg-white">
-      {/* Suitable Organic Background Overlay */}
-      <div className="absolute inset-0 z-0">
-          <img src={productsBg} className="w-full h-full object-cover opacity-30" alt="background" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/90" />
-      </div>
-
+    <section id="products" className="relative py-24 px-6 md:px-12 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-nature-dark mb-8 leading-none">
-            PRODUCTS <span className="opacity-30 uppercase">Page</span>
+        
+        {/* Popular Dishes Style Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <div className="flex items-center justify-center gap-2 mb-4">
+             <span className="text-[#E02B2B]">🍽️</span>
+             <span className="text-[#E02B2B] text-xs font-black uppercase tracking-[0.3em]">POPULAR GRAINS</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-[#111111] leading-[1.1] tracking-tighter">
+            Our Most Popular Grains
           </h2>
-          <p className="text-lg text-gray-400 font-medium max-w-xl mx-auto">Discover our premium hand-selected grains for daily nourishment.</p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        {/* Clean, Simple Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {products.map((p, i) => (
             <ProductCard key={i} {...p} />
           ))}
         </div>
         
-        <div className="mt-24 text-center">
-          <Link to="/products" className="bg-black text-white px-16 py-6 rounded-full text-xs font-black uppercase tracking-[0.3em] hover:bg-primary hover:scale-105 transition-all shadow-2xl inline-block">
-             Explore Full Catalog
+        <div className="mt-16 text-center">
+          <Link to="/products" className="bg-[#E02B2B] text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-colors hover:bg-[#111111] inline-flex items-center gap-2">
+             VIEW ALL ITEMS
+             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </Link>
         </div>
       </div>

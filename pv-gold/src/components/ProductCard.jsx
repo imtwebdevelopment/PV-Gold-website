@@ -1,89 +1,179 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ArrowRight, Plus, ShoppingBag } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
 
 const ProductCard = ({ name, weight, price, bestSeller, image }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  
-  // Placeholder image if none provided
   const displayImage = image || "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=400";
 
+  // Static product contents/facts based on product name
+  const getProductContents = (productName) => {
+    const nameLower = productName.toLowerCase();
+    if (nameLower.includes("basmati")) {
+      return {
+        origin: "Himalayan Foothills",
+        type: "Premium Long Grain (Aged)",
+        protein: "8.5g",
+        carbs: "78g",
+        fiber: "1.5g",
+        fat: "0.4g"
+      };
+    } else if (nameLower.includes("brown")) {
+      return {
+        origin: "Indo-Gangetic Plains",
+        type: "Whole Grain Unpolished",
+        protein: "7.9g",
+        carbs: "76g",
+        fiber: "3.5g",
+        fat: "2.2g"
+      };
+    } else if (nameLower.includes("dal") || nameLower.includes("lentil")) {
+      return {
+        origin: "Deccan Plateau",
+        type: "Yellow Split Pulses",
+        protein: "22g",
+        carbs: "57g",
+        fiber: "15g",
+        fat: "1.5g"
+      };
+    } else if (nameLower.includes("sona")) {
+      return {
+        origin: "Southern River Basins",
+        type: "Lightweight Medium Grain",
+        protein: "6.8g",
+        carbs: "79g",
+        fiber: "0.6g",
+        fat: "0.4g"
+      };
+    } else if (nameLower.includes("flour") || nameLower.includes("wheat")) {
+      return {
+        origin: "Madhya Pradesh",
+        type: "100% Whole Wheat Chakki",
+        protein: "12g",
+        carbs: "72g",
+        fiber: "11g",
+        fat: "1.7g"
+      };
+    }
+    return {
+      origin: "Standard Indian Farms",
+      type: "100% Natural Grain",
+      protein: "8.0g",
+      carbs: "75g",
+      fiber: "2.0g",
+      fat: "1.0g"
+    };
+  };
+
+  const contents = getProductContents(name);
+
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="perspective-1000 w-full aspect-square cursor-pointer group"
+    <div 
       onClick={() => setIsFlipped(!isFlipped)}
+      className="w-full h-[380px] cursor-pointer"
+      style={{ perspective: 1000 }}
     >
       <motion.div
-        className="w-full h-full relative transform-style-3d transition-all duration-700"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="relative w-full h-full"
       >
-        {/* FRONT SIDE: Fully Image */}
-        <div className="absolute inset-0 backface-hidden bg-white rounded-3xl overflow-hidden shadow-xl border border-black/5 group-hover:shadow-2xl transition-all duration-500">
+        {/* FRONT SIDE */}
+        <div 
+          style={{ backfaceVisibility: "hidden" }}
+          className="absolute inset-0 bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 p-6 flex flex-col items-center justify-between text-center transition-all duration-300 group"
+        >
           {bestSeller && (
-            <div className="absolute top-4 right-4 bg-primary text-white text-[8px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-xl z-20">
-              Best Seller
+            <div className="absolute top-4 left-4 bg-[#FFB800] text-black text-[10px] font-black px-2 py-1 uppercase tracking-widest z-20">
+              HOT
             </div>
           )}
-          
-          <div className="w-full h-full relative">
+
+          {/* Circular Image Container */}
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden mt-2 border-4 border-gray-50 group-hover:border-[#E02B2B]/20 transition-colors">
             <img 
               src={displayImage} 
               alt={name} 
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
-            {/* Elegant Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-nature-dark/80 via-transparent to-transparent opacity-90" />
+          </div>
+
+          {/* Content */}
+          <div className="flex flex-col items-center gap-1.5 w-full">
+            <h4 className="text-sm font-black text-[#111111] uppercase leading-tight line-clamp-2">{name}</h4>
             
-            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-               <div className="flex gap-1 mb-1 opacity-60">
-                 {[...Array(5)].map((_, i) => <Star key={i} size={8} className="fill-secondary text-secondary" />)}
-               </div>
-               <h4 className="text-xl font-black text-white mb-1 tracking-tighter leading-tight">{name}</h4>
-               <div className="flex justify-between items-center mt-2">
-                 <p className="text-[10px] text-white/50 font-black uppercase tracking-widest">{weight}</p>
-                 <div className="text-lg font-black text-primary bg-white/10 backdrop-blur-md px-3 py-1 rounded-xl border border-white/10">₹{price}</div>
-               </div>
+            {/* Stars */}
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={10} className="fill-[#FFB800] text-[#FFB800]" />
+              ))}
             </div>
+
+            <p className="text-xs text-gray-400 font-bold">{weight}</p>
+          </div>
+
+          {/* Price & Click Hint */}
+          <div className="w-full mt-2">
+            <div className="text-xl font-black text-[#E02B2B]">
+              ₹{price}
+            </div>
+            <p className="text-[10px] text-gray-300 font-bold uppercase tracking-widest mt-2 group-hover:text-[#E02B2B] transition-colors">
+              Click to View Contents
+            </p>
           </div>
         </div>
 
-        {/* BACK SIDE: Product Content */}
-        <div className="absolute inset-0 backface-hidden bg-nature-dark rounded-3xl p-8 text-white rotate-y-180 flex flex-col items-center justify-center text-center shadow-2xl">
-          <div className="mb-4">
-            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3 mx-auto border border-primary/20">
-               <ShoppingBag size={24} />
-            </div>
-            <h4 className="text-xl font-black tracking-tighter text-white leading-tight mb-1">{name}</h4>
-            <div className="h-0.5 w-10 bg-secondary mx-auto rounded-full" />
+        {/* BACK SIDE */}
+        <div 
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          className="absolute inset-0 bg-[#111111] text-white rounded-xl shadow-xl border-2 border-[#E02B2B]/40 p-6 flex flex-col justify-between items-center text-center"
+        >
+          {/* Back Header */}
+          <div className="w-full">
+            <span className="text-[9px] uppercase tracking-[0.3em] font-black text-[#E02B2B]">PRODUCT CONTENTS</span>
+            <h4 className="text-xs font-black text-white uppercase leading-tight mt-1 mb-2">{name}</h4>
+            <div className="h-[2px] w-12 bg-[#FFB800] mx-auto"></div>
           </div>
 
-          <p className="text-gray-400 text-[10px] leading-relaxed mb-6 font-medium italic px-2">
-            "Experience the purity of nature with our hand-selected {name.toLowerCase()}. Nurtured in the heart of Punjab for the perfect taste and aroma."
-          </p>
-          
-          <div className="space-y-2 w-full mb-6">
-            <div className="flex justify-between text-[10px] font-black uppercase tracking-widest py-2 border-b border-white/5">
-               <span className="text-gray-500">Net Weight</span>
-               <span className="text-secondary">{weight}</span>
+          {/* Static Contents Facts Table */}
+          <div className="w-full text-left bg-white/5 p-3 rounded-lg border border-white/10 flex flex-col gap-2">
+            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
+              <span className="text-gray-400 font-bold">TYPE</span>
+              <span className="text-white font-black uppercase text-[10px]">{contents.type}</span>
             </div>
-            <div className="flex justify-between text-[10px] font-black uppercase tracking-widest py-2 border-b border-white/5">
-               <span className="text-gray-500">Premium</span>
-               <span className="text-secondary">A+ Grade</span>
+            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
+              <span className="text-gray-400 font-bold">ORIGIN</span>
+              <span className="text-white font-black uppercase text-[10px]">{contents.origin}</span>
+            </div>
+            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
+              <span className="text-gray-400 font-bold">PROTEIN (PER 100G)</span>
+              <span className="text-white font-black text-[10px]">{contents.protein}</span>
+            </div>
+            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
+              <span className="text-gray-400 font-bold">CARBOHYDRATES</span>
+              <span className="text-white font-black text-[10px]">{contents.carbs}</span>
+            </div>
+            <div className="flex justify-between text-[11px]">
+              <span className="text-gray-400 font-bold">DIETARY FIBER</span>
+              <span className="text-white font-black text-[10px]">{contents.fiber}</span>
             </div>
           </div>
 
-          <div className="w-full mt-auto">
-             <button className="w-full bg-primary text-white py-3.5 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-primary transition-all shadow-xl flex items-center justify-center gap-2">
-               Select <ArrowRight size={12} />
-             </button>
+          {/* Price, Weight, and Back Hint */}
+          <div className="w-full">
+            <div className="flex justify-center items-center gap-4 text-xs font-bold uppercase text-gray-400 mb-1.5">
+              <span>{weight}</span>
+              <span className="text-white">|</span>
+              <span className="text-[#FFB800] font-black text-sm">₹{price}</span>
+            </div>
+            <p className="text-[9px] text-gray-500 font-black uppercase tracking-widest">
+              Click to Flip Back
+            </p>
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
