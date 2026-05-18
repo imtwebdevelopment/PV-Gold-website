@@ -7,7 +7,7 @@ const FloatingActions = () => {
     <div className="fixed bottom-8 right-6 z-[100] flex flex-col gap-5 items-center">
       {/* Real WhatsApp Button */}
       <motion.a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/918277130774"
         target="_blank"
         rel="noreferrer"
         initial={{ opacity: 0, x: 20 }}
@@ -31,7 +31,7 @@ const FloatingActions = () => {
 
       {/* Realistic Call Button */}
       <motion.a
-        href="tel:+919876543210"
+        href="tel:+918277130774"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0, transition: { delay: 0.1 } }}
         whileHover={{ scale: 1.1, rotate: -5 }}

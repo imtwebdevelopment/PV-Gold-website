@@ -34,10 +34,14 @@ const Contact = () => (
                 <MapPin size={24} className="text-white" />
               </div>
               <div>
-                <p className="text-white/70 text-[10px] uppercase tracking-widest font-black mb-1">Location</p>
+                <p className="text-white/70 text-[10px] uppercase tracking-widest font-black mb-1">Packed & Marketed by</p>
                 <p className="text-sm font-bold leading-relaxed">
-                  123 Grain Valley, Nature District,<br />
-                  Sustainability Park, India
+                  SRI RUDRESHWARA ENTERPRISES<br />
+                  <span className="text-[12px] font-medium text-white/90 leading-relaxed block mt-1">
+                    Francis Building, Karnataka Layout,<br />
+                    Indranagar Main Road,<br />
+                    Tiptur - 572 201.
+                  </span>
                 </p>
               </div>
             </div>
@@ -47,7 +51,7 @@ const Contact = () => (
               </div>
               <div>
                 <p className="text-white/70 text-[10px] uppercase tracking-widest font-black mb-1">Direct Line</p>
-                <p className="text-sm font-bold">+91 98765 43210</p>
+                <p className="text-sm font-bold">+91 82771 30774</p>
               </div>
             </div>
             <div className="flex items-start gap-4">

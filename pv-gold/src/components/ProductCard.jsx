@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Star, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ name, weight, price, bestSeller, image }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const displayImage = image || "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=400";
 
   // Static product contents/facts based on product name
@@ -140,112 +141,172 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
   const contents = getProductContents(name);
 
   return (
-    <div 
-      onClick={() => setIsFlipped(!isFlipped)}
-      className="w-full h-[380px] cursor-pointer"
-      style={{ perspective: 1000 }}
-    >
-      <motion.div
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-        style={{ transformStyle: "preserve-3d" }}
-        className="relative w-full h-full"
+    <>
+      <div 
+        onClick={() => setIsOpen(true)}
+        className="w-full bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center justify-between text-center transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5 cursor-pointer group relative"
       >
-        {/* FRONT SIDE */}
-        <div 
-          style={{ backfaceVisibility: "hidden" }}
-          className="absolute inset-0 bg-white rounded-xl shadow-sm hover:shadow-xl border border-gray-100 p-6 flex flex-col items-center justify-between text-center transition-all duration-300 group"
-        >
-          {bestSeller && (
-            <div className="absolute top-4 left-4 bg-[#FFB800] text-black text-[10px] font-black px-2 py-1 uppercase tracking-widest z-20">
-              HOT
-            </div>
-          )}
+        {bestSeller && (
+          <div className="absolute top-4 left-4 bg-[#FFB800] text-black text-[10px] font-black px-2.5 py-1 uppercase tracking-widest z-10 rounded-sm">
+            HOT
+          </div>
+        )}
 
-          {/* Circular Image Container */}
-          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden mt-2 border-4 border-gray-50 group-hover:border-[#E02B2B]/20 transition-colors">
-            <img 
-              src={displayImage} 
-              alt={name} 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        {/* Circular Image Container */}
+        <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden mt-2 border-4 border-gray-50 group-hover:border-[#E02B2B]/20 transition-colors">
+          <img 
+            src={displayImage} 
+            alt={name} 
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col items-center gap-1.5 w-full mt-4">
+          <h4 className="text-sm font-black text-[#111111] uppercase leading-tight line-clamp-2">{name}</h4>
+          
+          {/* Stars */}
+          <div className="flex items-center gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} size={10} className="fill-[#FFB800] text-[#FFB800]" />
+            ))}
+          </div>
+
+          <p className="text-xs text-gray-400 font-bold">{weight}</p>
+        </div>
+
+        {/* Actions */}
+        <div className="w-full flex gap-3 mt-5" onClick={(e) => e.stopPropagation()}>
+          <button 
+            onClick={() => setIsOpen(true)}
+            className="flex-1 bg-gray-50 hover:bg-[#E02B2B] border border-gray-200 hover:border-[#E02B2B] text-[#111111] hover:text-white text-[10px] font-black uppercase tracking-widest py-3 px-2 transition-all duration-300 shadow-sm hover:shadow-md rounded-md text-center"
+          >
+            View
+          </button>
+          <Link 
+            to="/contact"
+            className="flex-1 bg-[#E02B2B] hover:bg-[#111111] border border-[#E02B2B] hover:border-[#111111] text-white text-[10px] font-black uppercase tracking-widest py-3 px-2 transition-all duration-300 shadow-sm hover:shadow-md rounded-md text-center flex items-center justify-center"
+          >
+            Enquiry
+          </Link>
+        </div>
+      </div>
+
+      {/* Modal Popup */}
+      <AnimatePresence>
+        {isOpen && (
+          <div className="fixed inset-0 z-[9999] flex items-start justify-center p-4 md:p-6 overflow-y-auto pt-24 md:pt-28 pb-8">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-md"
             />
-          </div>
 
-          {/* Content */}
-          <div className="flex flex-col items-center gap-1.5 w-full">
-            <h4 className="text-sm font-black text-[#111111] uppercase leading-tight line-clamp-2">{name}</h4>
-            
-            {/* Stars */}
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={10} className="fill-[#FFB800] text-[#FFB800]" />
-              ))}
-            </div>
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 280 }}
+              className="bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl relative border border-gray-100 flex flex-col md:flex-row h-auto max-h-[85vh] md:max-h-[80vh] z-10"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-3.5 right-3.5 text-gray-400 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 p-2 rounded-full transition-colors z-30 flex items-center justify-center cursor-pointer"
+              >
+                <X size={16} />
+              </button>
 
-            <p className="text-xs text-gray-400 font-bold">{weight}</p>
-          </div>
+              {/* Left Column: Contents */}
+              <div className="flex-1 p-5 md:p-8 overflow-y-auto flex flex-col justify-between">
+                <div>
+                  {bestSeller && (
+                    <span className="bg-[#FFB800] text-black text-[9px] font-black px-2.5 py-1 uppercase tracking-widest rounded-sm mb-4 inline-block">
+                      HOT
+                    </span>
+                  )}
+                  <h3 className="text-lg md:text-2xl font-black text-[#111111] uppercase tracking-tight leading-none mb-2">
+                    {name}
+                  </h3>
+                  
+                  {/* Stars */}
+                  <div className="flex items-center gap-1.5 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={10} className="fill-[#FFB800] text-[#FFB800]" />
+                    ))}
+                  </div>
 
-          {/* Price & Click Hint */}
-          <div className="w-full mt-2">
-            <div className="text-xl font-black text-[#E02B2B]">
-              ₹{price}
-            </div>
-            <p className="text-[10px] text-gray-300 font-bold uppercase tracking-widest mt-2 group-hover:text-[#E02B2B] transition-colors">
-              Click to View
-            </p>
-          </div>
-        </div>
+                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-3">
+                    PACKAGING SIZES: {weight}
+                  </p>
 
-        {/* BACK SIDE */}
-        <div 
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-          className="absolute inset-0 bg-[#111111] text-white rounded-xl shadow-xl border-2 border-[#E02B2B]/40 p-6 flex flex-col justify-between items-center text-center"
-        >
-          {/* Back Header */}
-          <div className="w-full">
-            <span className="text-[9px] uppercase tracking-[0.3em] font-black text-[#E02B2B]">PRODUCT</span>
-            <h4 className="text-xs font-black text-white uppercase leading-tight mt-1 mb-2">{name}</h4>
-            <div className="h-[2px] w-12 bg-[#FFB800] mx-auto"></div>
-          </div>
+                  <h5 className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-2">
+                    Product Information
+                  </h5>
+                  
+                  <div className="w-full text-left bg-gray-50/50 p-3 md:p-3.5 rounded-xl border border-gray-100 flex flex-col gap-2">
+                    <div className="flex justify-between text-[11px] border-b border-gray-100 pb-1.5">
+                      <span className="text-gray-400 font-bold uppercase tracking-wider">Type</span>
+                      <span className="text-[#111111] font-black uppercase">{contents.type}</span>
+                    </div>
+                    <div className="flex justify-between text-[11px] border-b border-gray-100 pb-1.5">
+                      <span className="text-gray-400 font-bold uppercase tracking-wider">Origin</span>
+                      <span className="text-[#111111] font-black uppercase">{contents.origin}</span>
+                    </div>
+                    <div className="flex justify-between text-[11px] border-b border-gray-100 pb-1.5">
+                      <span className="text-gray-400 font-bold uppercase tracking-wider">Protein (per 100g)</span>
+                      <span className="text-[#111111] font-black">{contents.protein}</span>
+                    </div>
+                    <div className="flex justify-between text-[11px] border-b border-gray-100 pb-1.5">
+                      <span className="text-gray-400 font-bold uppercase tracking-wider">Carbohydrates</span>
+                      <span className="text-[#111111] font-black">{contents.carbs}</span>
+                    </div>
+                    <div className="flex justify-between text-[11px] border-b border-gray-100 pb-1.5">
+                      <span className="text-gray-400 font-bold uppercase tracking-wider">Dietary Fiber</span>
+                      <span className="text-[#111111] font-black">{contents.fiber}</span>
+                    </div>
+                    <div className="flex justify-between text-[11px] pb-0.5">
+                      <span className="text-gray-400 font-bold uppercase tracking-wider">Fat</span>
+                      <span className="text-[#111111] font-black">{contents.fat}</span>
+                    </div>
+                  </div>
+                </div>
 
-          {/* Static Contents Facts Table */}
-          <div className="w-full text-left bg-white/5 p-3 rounded-lg border border-white/10 flex flex-col gap-2">
-            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
-              <span className="text-gray-400 font-bold">TYPE</span>
-              <span className="text-white font-black uppercase text-[10px]">{contents.type}</span>
-            </div>
-            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
-              <span className="text-gray-400 font-bold">ORIGIN</span>
-              <span className="text-white font-black uppercase text-[10px]">{contents.origin}</span>
-            </div>
-            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
-              <span className="text-gray-400 font-bold">PROTEIN (PER 100G)</span>
-              <span className="text-white font-black text-[10px]">{contents.protein}</span>
-            </div>
-            <div className="flex justify-between text-[11px] border-b border-white/5 pb-1">
-              <span className="text-gray-400 font-bold">CARBOHYDRATES</span>
-              <span className="text-white font-black text-[10px]">{contents.carbs}</span>
-            </div>
-            <div className="flex justify-between text-[11px]">
-              <span className="text-gray-400 font-bold">DIETARY FIBER</span>
-              <span className="text-white font-black text-[10px]">{contents.fiber}</span>
-            </div>
-          </div>
+                {/* Enquiry CTA inside Modal */}
+                <div className="mt-5">
+                  <Link 
+                    to="/contact"
+                    className="w-full bg-[#E02B2B] hover:bg-[#111111] border border-[#E02B2B] hover:border-[#111111] text-white text-[11px] font-black uppercase tracking-widest py-3 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                  >
+                    Send Product Enquiry
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </Link>
+                </div>
+              </div>
 
-          {/* Price, Weight, and Back Hint */}
-          <div className="w-full">
-            <div className="flex justify-center items-center gap-4 text-xs font-bold uppercase text-gray-400 mb-1.5">
-              <span>{weight}</span>
-              <span className="text-white">|</span>
-              <span className="text-[#FFB800] font-black text-sm">₹{price}</span>
-            </div>
-            <p className="text-[9px] text-gray-500 font-black uppercase tracking-widest">
-              Click to Flip Back
-            </p>
+              {/* Right Column: Product Image */}
+              <div className="w-full md:w-1/2 bg-gray-50 flex items-center justify-center p-6 md:p-8 relative overflow-hidden border-t md:border-t-0 md:border-l border-gray-100 min-h-[250px] md:min-h-0">
+                {/* Subtle organic bg shape */}
+                <div 
+                  className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                  style={{ background: 'radial-gradient(circle at center, #E02B2B 0%, transparent 70%)' }}
+                />
+                
+                <img 
+                  src={displayImage} 
+                  alt={name} 
+                  className="w-40 h-40 md:w-60 md:h-60 object-contain filter drop-shadow-xl hover:scale-105 transition-transform duration-500 relative z-10"
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </motion.div>
-    </div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
