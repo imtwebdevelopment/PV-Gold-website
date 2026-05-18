@@ -119,7 +119,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
               ₹{price}
             </div>
             <p className="text-[10px] text-gray-300 font-bold uppercase tracking-widest mt-2 group-hover:text-[#E02B2B] transition-colors">
-              Click to View Contents
+              Click to View
             </p>
           </div>
         </div>
@@ -131,7 +131,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
         >
           {/* Back Header */}
           <div className="w-full">
-            <span className="text-[9px] uppercase tracking-[0.3em] font-black text-[#E02B2B]">PRODUCT CONTENTS</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] font-black text-[#E02B2B]">PRODUCT</span>
             <h4 className="text-xs font-black text-white uppercase leading-tight mt-1 mb-2">{name}</h4>
             <div className="h-[2px] w-12 bg-[#FFB800] mx-auto"></div>
           </div>

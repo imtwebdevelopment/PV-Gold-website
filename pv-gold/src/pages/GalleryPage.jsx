@@ -4,7 +4,7 @@ import Gallery from '../sections/Gallery';
 
 const GalleryPage = () => {
   return (
-    <div className="terra-new-bg min-h-screen pt-20 pb-20 overflow-hidden">
+    <div className="bg-[#111111] min-h-screen pt-[116px] overflow-hidden">
       <div className="relative z-10">
         <Gallery />
       </div>

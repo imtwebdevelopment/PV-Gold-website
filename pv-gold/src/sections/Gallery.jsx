@@ -33,7 +33,7 @@ const Gallery = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 md:gap-6">
           {images.map((img, i) => (
             <motion.div
               key={i}
@@ -41,7 +41,7 @@ const Gallery = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8 }}
-              className={`relative rounded-xl overflow-hidden group cursor-pointer ${img.span} aspect-[4/3] lg:aspect-auto h-[350px] lg:h-[400px] border border-[#333]`}
+              className={`relative rounded-xl overflow-hidden group cursor-pointer ${img.span} aspect-[4/3] md:aspect-[16/10] lg:aspect-auto h-[260px] sm:h-[300px] md:h-[280px] lg:h-[400px] border border-[#333]`}
             >
               <img src={img.src} alt={img.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-white border-4 border-[#E02B2B] m-2 rounded-lg">

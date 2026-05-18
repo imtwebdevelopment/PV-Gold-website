@@ -60,25 +60,25 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar - Dark Background */}
-      <nav className={`w-full bg-[#111111] transition-all duration-300 ${isScrolled ? 'h-[70px]' : 'h-[80px]'}`}>
+      <nav className={`w-full bg-[#111111] transition-all duration-300 ${isScrolled ? 'h-[80px]' : 'h-[95px]'}`}>
         <div className="flex justify-between items-stretch h-full max-w-[1600px] mx-auto">
 
           {/* Logo Section with Angled White Background */}
-          <Link to="/" className="flex items-center bg-white text-[#111111] pl-6 pr-12 md:pl-12 md:pr-16 relative overflow-hidden group shadow-[5px_0_15px_rgba(0,0,0,0.2)]" style={{ clipPath: 'polygon(0 0, 100% 0, 85% 100%, 0% 100%)' }}>
-            <div className="flex items-center gap-3 z-10 relative">
+          <Link to="/" className="flex items-center bg-white text-[#111111] pl-6 pr-16 md:pl-12 md:pr-24 relative overflow-hidden group shadow-[5px_0_15px_rgba(0,0,0,0.2)]" style={{ clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0% 100%)' }}>
+            <div className="flex items-center gap-4 z-10 relative">
+              <div className="w-16 h-16 md:w-20 md:h-20 relative overflow-hidden flex-shrink-0">
+                <img src={logo} alt="PV GOLD Logo" className="w-full h-full object-contain" />
+              </div>
               <div className="flex flex-col items-stretch gap-1">
                 {/* Top Orange Line (Left Aligned) */}
                 <div className="h-[2.5px] w-10 bg-[#FFB800] self-start"></div>
-                
+
                 <span className="text-xl md:text-2xl font-black tracking-tight leading-none whitespace-nowrap text-[#111111] uppercase">PV GOLD</span>
-                
+
                 <span className="text-[9px] uppercase tracking-[0.2em] font-black text-gray-500 leading-none self-start pl-0.5">GRAINS</span>
-                
+
                 {/* Bottom Orange Line (Right Aligned) */}
                 <div className="h-[2.5px] w-12 bg-[#FFB800] self-end mt-0.5"></div>
-              </div>
-              <div className="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden flex-shrink-0">
-                <img src={logo} alt="PV GOLD Logo" className="w-full h-full object-contain" />
               </div>
             </div>
           </Link>
@@ -87,7 +87,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-8 px-4 flex-1">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About Us</NavLink>
-            <NavLink to="/products">Shop</NavLink>
+            <NavLink to="/products">Products</NavLink>
             <NavLink to="/gallery">Gallery</NavLink>
             <NavLink to="/contact">Contact Us</NavLink>
           </div>
@@ -100,8 +100,8 @@ const Navbar = () => {
               </button>
             </div>
 
-            <Link to="/products" className="hidden sm:flex items-center justify-center bg-[#E02B2B] hover:bg-white hover:text-black text-white h-full px-6 md:px-8 font-black text-[12px] uppercase tracking-widest transition-colors duration-300 group">
-              ORDER NOW 
+            <Link to="/contact" className="hidden sm:flex items-center justify-center bg-[#E02B2B] hover:bg-white hover:text-black text-white h-full px-6 md:px-8 font-black text-[12px] uppercase tracking-widest transition-colors duration-300 group">
+              ENQUIRY NOW
               <span className="ml-3 bg-white text-[#E02B2B] w-5 h-5 flex items-center justify-center font-bold text-[14px] group-hover:bg-[#E02B2B] group-hover:text-white transition-colors">
                 +
               </span>
@@ -126,7 +126,7 @@ const Navbar = () => {
               <div className="flex flex-col py-4 px-6 gap-4">
                 <Link to="/" onClick={() => setIsOpen(false)} className="text-white font-bold uppercase text-sm border-b border-[#333] pb-2">Home</Link>
                 <Link to="/about" onClick={() => setIsOpen(false)} className="text-white font-bold uppercase text-sm border-b border-[#333] pb-2">About Us</Link>
-                <Link to="/products" onClick={() => setIsOpen(false)} className="text-white font-bold uppercase text-sm border-b border-[#333] pb-2">Shop</Link>
+                <Link to="/products" onClick={() => setIsOpen(false)} className="text-white font-bold uppercase text-sm border-b border-[#333] pb-2">Products</Link>
                 <Link to="/gallery" onClick={() => setIsOpen(false)} className="text-white font-bold uppercase text-sm border-b border-[#333] pb-2">Gallery</Link>
                 <Link to="/contact" onClick={() => setIsOpen(false)} className="text-white font-bold uppercase text-sm border-b border-[#333] pb-2">Contact Us</Link>
 
@@ -136,8 +136,8 @@ const Navbar = () => {
                   </button>
                 </div>
 
-                <Link to="/products" onClick={() => setIsOpen(false)} className="bg-[#E02B2B] text-white py-4 px-6 font-black text-xs uppercase tracking-widest text-center w-full mt-2 rounded flex items-center justify-center gap-3">
-                  ORDER NOW
+                <Link to="/contact" onClick={() => setIsOpen(false)} className="bg-[#E02B2B] text-white py-4 px-6 font-black text-xs uppercase tracking-widest text-center w-full mt-2 rounded flex items-center justify-center gap-3">
+                  ENQUIRY NOW
                   <span className="bg-white text-[#E02B2B] w-5 h-5 flex items-center justify-center font-bold text-[14px]">
                     +
                   </span>

@@ -29,8 +29,8 @@ const Hero = () => (
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-          <Link to="/products" className="bg-[#E02B2B] hover:bg-white hover:text-black text-white px-8 py-4 font-black uppercase tracking-widest text-sm transition-colors duration-300 flex items-center gap-3">
-            Order Now
+          <Link to="/contact" className="bg-[#E02B2B] hover:bg-white hover:text-black text-white px-8 py-4 font-black uppercase tracking-widest text-sm transition-colors duration-300 flex items-center gap-3">
+            Enquiry Now
             <ArrowUpRight size={18} />
           </Link>
           <div className="flex items-center gap-3">
