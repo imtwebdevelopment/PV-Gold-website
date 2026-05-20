@@ -289,7 +289,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
               </div>
 
               {/* Right Column: Product Image */}
-              <div className="w-full md:w-1/2 bg-gray-50 flex items-center justify-center p-6 md:p-8 relative overflow-hidden border-t md:border-t-0 md:border-l border-gray-100 min-h-[250px] md:min-h-0">
+              <div className="w-full md:w-1/2 bg-gray-50 flex items-center justify-center p-2 relative overflow-hidden border-t md:border-t-0 md:border-l border-gray-100 min-h-[320px] md:min-h-0">
                 {/* Subtle organic bg shape */}
                 <div 
                   className="absolute inset-0 opacity-[0.03] pointer-events-none" 
@@ -299,7 +299,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
                 <img 
                   src={displayImage} 
                   alt={name} 
-                  className="w-40 h-40 md:w-60 md:h-60 object-contain filter drop-shadow-xl hover:scale-105 transition-transform duration-500 relative z-10"
+                  className="w-72 h-72 md:w-[380px] md:h-[380px] object-contain filter drop-shadow-xl hover:scale-105 transition-transform duration-500 relative z-10"
                 />
               </div>
             </motion.div>

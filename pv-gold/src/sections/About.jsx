@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FlaskConical, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import phoneMockup from '../assets/phone-mockup.png';
-import luxuryGrains from '../assets/luxury-grains.png';
+import pvGoldLogo from '../assets/PV Gold-logo.jpeg';
 import aboutBg from '../assets/about-bg-suitable.png';
 
 const About = () => (
@@ -24,7 +24,7 @@ const About = () => (
           
           {/* Main Image */}
           <div className="w-full h-full rounded-full overflow-hidden border-8 border-white shadow-2xl relative z-10 bg-white">
-            <img src={luxuryGrains} alt="PV Gold Grains" className="w-full h-full object-cover scale-110" />
+            <img src={pvGoldLogo} alt="PV Gold Grains" className="w-full h-full object-contain p-6" />
           </div>
           
           {/* Floating Element like the leaves in the design */}
