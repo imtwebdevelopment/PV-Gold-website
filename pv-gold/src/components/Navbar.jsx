@@ -66,7 +66,7 @@ const Navbar = () => {
           {/* Logo Section with Angled White Background */}
           <Link to="/" className="flex items-center bg-white text-[#111111] pl-6 pr-16 md:pl-12 md:pr-24 relative overflow-hidden group shadow-[5px_0_15px_rgba(0,0,0,0.2)]" style={{ clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0% 100%)' }}>
             <div className="flex items-center gap-4 z-10 relative">
-              <div className="w-16 h-16 md:w-20 md:h-20 relative overflow-hidden flex-shrink-0">
+              <div className="w-20 h-20 md:w-24 md:h-24 relative flex-shrink-0">
                 <img src={logo} alt="PV GOLD Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col items-stretch gap-1">
