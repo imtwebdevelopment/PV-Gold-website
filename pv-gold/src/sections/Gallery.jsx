@@ -26,7 +26,7 @@ const Gallery = ({ isDedicated = false }) => {
 
   return (
     <section id="gallery" className="relative py-24 px-6 md:px-12 bg-[#111111] overflow-hidden border-t-8 border-[#E02B2B]">
-      
+
       {/* Decorative Red Accent */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#E02B2B] rounded-full blur-[100px] opacity-20 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#E02B2B] rounded-full blur-[100px] opacity-20 pointer-events-none" />
@@ -51,10 +51,10 @@ const Gallery = ({ isDedicated = false }) => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8 }}
               onClick={() => setActiveImage(img)}
-              className={`relative rounded-xl overflow-hidden group cursor-pointer ${img.span} aspect-[4/3] md:aspect-[16/10] lg:aspect-auto h-[260px] sm:h-[300px] md:h-[280px] lg:h-[400px] border-4 border-[#222222] hover:border-[#E02B2B] transition-colors duration-300`}
+              className={`relative rounded-xl overflow-hidden group cursor-pointer ${img.span} aspect-[4/3] md:aspect-[16/10] lg:aspect-auto h-[260px] sm:h-[300px] md:h-[280px] lg:h-[400px] border-2 border-[#E02B2B]/60 hover:border-[#E02B2B] transition-colors duration-300 shadow-[0_0_10px_rgba(224,43,43,0.15)] hover:shadow-[0_0_20px_rgba(224,43,43,0.4)]`}
             >
               <img src={img.src} alt={img.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-white border-4 border-[#E02B2B] m-2 rounded-lg">
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-white">
                 <Camera size={32} className="mb-3 text-[#E02B2B]" />
                 <span className="text-sm font-black uppercase tracking-widest text-center px-4">{img.title}</span>
               </div>
@@ -111,7 +111,7 @@ const Gallery = ({ isDedicated = false }) => {
               </div>
 
               {/* Title label */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}

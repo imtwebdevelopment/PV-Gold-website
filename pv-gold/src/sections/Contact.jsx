@@ -60,7 +60,7 @@ const Contact = () => (
               </div>
               <div>
                 <p className="text-white/70 text-[10px] uppercase tracking-widest font-black mb-1">Support</p>
-                <p className="text-sm font-bold truncate">hello@pvgold.com</p>
+                <p className="text-sm font-bold truncate">info@pvgold.in</p>
               </div>
             </div>
           </div>

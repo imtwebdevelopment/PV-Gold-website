@@ -55,9 +55,6 @@ const About = () => (
         {/* Main Heading */}
         <h2 className="text-4xl md:text-6xl font-black text-[#111111] leading-[1.15] tracking-tighter">
           <span className="block text-[#0B6E3F]">PV Gold</span>
-          <span className="block text-2xl md:text-4xl font-semibold text-[#0B6E3F] mt-2 tracking-normal">
-            Pure Grain, Pure Life
-          </span>
         </h2>
 
         {/* Description Text */}

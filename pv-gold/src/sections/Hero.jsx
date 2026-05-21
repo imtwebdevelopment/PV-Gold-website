@@ -67,7 +67,7 @@ const Hero = () => {
     enter: (dir) => ({
       x: dir > 0 ? '100%' : '-100%',
       scale: 1.05,
-      opacity: 0
+      opacity: 1
     }),
     center: {
       x: 0,
@@ -77,14 +77,13 @@ const Hero = () => {
     exit: (dir) => ({
       x: dir < 0 ? '-25%' : '25%',
       scale: 0.96,
-      opacity: 0
+      opacity: 1
     })
   };
 
   // Premium spring physics transition
   const parallaxTransition = {
     x: { type: 'spring', stiffness: 220, damping: 26 },
-    opacity: { duration: 0.5 },
     scale: { duration: 0.6, ease: 'easeOut' }
   };
 
@@ -97,7 +96,7 @@ const Hero = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Main Carousel Wrapper - aspect ratio is locked to 16:9 to perfectly fit the banners without cropping */}
-      <div className="relative w-full overflow-hidden aspect-[16/9] h-auto bg-transparent">
+      <div className="relative w-full overflow-hidden aspect-[16/9] h-auto bg-black">
         <AnimatePresence initial={false} custom={direction} mode="sync">
           <motion.div
             key={currentIndex}
