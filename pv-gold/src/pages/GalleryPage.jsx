@@ -5,8 +5,8 @@ import Gallery from '../sections/Gallery';
 const GalleryPage = () => {
   return (
     <div className="bg-[#111111] min-h-screen pt-[116px] overflow-hidden">
-      <div className="relative z-10">
-        <Gallery />
+      <div>
+        <Gallery isDedicated={true} />
       </div>
     </div>
   );

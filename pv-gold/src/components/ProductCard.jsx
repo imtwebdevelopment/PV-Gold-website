@@ -211,7 +211,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 280 }}
-              className="bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl relative border border-gray-100 flex flex-col md:flex-row h-auto max-h-[85vh] md:max-h-[80vh] z-10"
+              className="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl relative border border-gray-100 flex flex-col md:flex-row h-auto max-h-[85vh] md:max-h-[80vh] z-10"
             >
               {/* Close Button */}
               <button
@@ -289,7 +289,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
               </div>
 
               {/* Right Column: Product Image */}
-              <div className="w-full md:w-1/2 bg-gray-50 flex items-center justify-center p-2 relative overflow-hidden border-t md:border-t-0 md:border-l border-gray-100 min-h-[320px] md:min-h-0">
+              <div className="w-full md:w-1/2 bg-gray-50 flex items-center justify-center p-4 md:p-6 relative overflow-hidden border-t md:border-t-0 md:border-l border-gray-100 min-h-[360px] md:min-h-0">
                 {/* Subtle organic bg shape */}
                 <div 
                   className="absolute inset-0 opacity-[0.03] pointer-events-none" 
@@ -299,7 +299,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
                 <img 
                   src={displayImage} 
                   alt={name} 
-                  className="w-72 h-72 md:w-[380px] md:h-[380px] object-contain filter drop-shadow-xl hover:scale-105 transition-transform duration-500 relative z-10"
+                  className="w-80 h-80 md:w-[420px] md:h-[420px] object-contain filter drop-shadow-xl hover:scale-105 transition-transform duration-500 relative z-10"
                 />
               </div>
             </motion.div>

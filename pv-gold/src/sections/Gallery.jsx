@@ -1,18 +1,27 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Camera } from 'lucide-react';
-import g1 from '../assets/gallery-1.png';
-import g2 from '../assets/gallery-2.png';
-import g3 from '../assets/gallery-3.png';
-import g4 from '../assets/gallery-4.png';
-import bgNature from '../assets/bg-nature.png';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Camera, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const Gallery = () => {
+import gallary1 from '../assets/Gallary1.jpeg';
+import gallary2 from '../assets/Gallary2.jpeg';
+import gallary3 from '../assets/Gallary3.jpeg';
+import gallary4 from '../assets/Gallary4.jpeg';
+import gallary5 from '../assets/Gallary5.jpeg';
+import gallary6 from '../assets/Gallary6.jpeg';
+import gallary7 from '../assets/Gallary7.jpeg';
+
+const Gallery = ({ isDedicated = false }) => {
+  const [activeImage, setActiveImage] = useState(null);
+
   const images = [
-    { src: g1, span: "lg:col-span-4", title: "Premium Quality" },
-    { src: g2, span: "lg:col-span-8", title: "Fresh Harvest" },
-    { src: g3, span: "lg:col-span-6", title: "Organic Grains" },
-    { src: g4, span: "lg:col-span-6", title: "Pure Nature" },
+    { src: gallary1, span: "lg:col-span-4", title: "Premium Grains Quality" },
+    { src: gallary2, span: "lg:col-span-8", title: "Flour Processing Excellence" },
+    { src: gallary3, span: "lg:col-span-6", title: "State-of-the-Art Milling" },
+    { src: gallary4, span: "lg:col-span-6", title: "Hygienic Packaging Line" },
+    { src: gallary5, span: "lg:col-span-4", title: "Strict Quality Control" },
+    { src: gallary6, span: "lg:col-span-4", title: "Bulk Sacks Warehousing" },
+    { src: gallary7, span: "lg:col-span-4", title: "Ready-to-Ship Logistics" },
   ];
 
   return (
@@ -41,24 +50,80 @@ const Gallery = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8 }}
-              className={`relative rounded-xl overflow-hidden group cursor-pointer ${img.span} aspect-[4/3] md:aspect-[16/10] lg:aspect-auto h-[260px] sm:h-[300px] md:h-[280px] lg:h-[400px] border border-[#333]`}
+              onClick={() => setActiveImage(img)}
+              className={`relative rounded-xl overflow-hidden group cursor-pointer ${img.span} aspect-[4/3] md:aspect-[16/10] lg:aspect-auto h-[260px] sm:h-[300px] md:h-[280px] lg:h-[400px] border-4 border-[#222222] hover:border-[#E02B2B] transition-colors duration-300`}
             >
               <img src={img.src} alt={img.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-white border-4 border-[#E02B2B] m-2 rounded-lg">
                 <Camera size={32} className="mb-3 text-[#E02B2B]" />
-                <span className="text-sm font-black uppercase tracking-widest">{img.title}</span>
+                <span className="text-sm font-black uppercase tracking-widest text-center px-4">{img.title}</span>
               </div>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <button className="bg-[#E02B2B] text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-colors hover:bg-white hover:text-black inline-flex items-center gap-2">
-            View Full Gallery
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </button>
-        </div>
+        {!isDedicated && (
+          <div className="mt-16 text-center">
+            <Link to="/gallery" className="bg-[#E02B2B] text-white px-10 py-4 font-black uppercase tracking-widest text-xs transition-colors hover:bg-white hover:text-black inline-flex items-center gap-2">
+              View Full Gallery
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </Link>
+          </div>
+        )}
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {activeImage && (
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveImage(null)}
+              className="fixed inset-0 bg-black/95 backdrop-blur-md cursor-zoom-out"
+            />
+
+            {/* Modal Container */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-5xl w-full flex flex-col items-center z-10"
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setActiveImage(null)}
+                className="absolute -top-12 right-0 md:-top-14 md:right-0 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-colors z-20 cursor-pointer"
+              >
+                <X size={20} />
+              </button>
+
+              {/* Main Image */}
+              <div className="relative rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl max-h-[75vh] md:max-h-[80vh] flex items-center justify-center bg-[#111]">
+                <img
+                  src={activeImage.src}
+                  alt={activeImage.title}
+                  className="max-w-full max-h-[75vh] md:max-h-[80vh] object-contain"
+                />
+              </div>
+
+              {/* Title label */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className="mt-4 flex items-center gap-2 bg-[#E02B2B] text-white px-4 py-2 rounded-full shadow-lg"
+              >
+                <Camera size={14} />
+                <span className="text-[10px] font-black uppercase tracking-widest">{activeImage.title}</span>
+              </motion.div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
