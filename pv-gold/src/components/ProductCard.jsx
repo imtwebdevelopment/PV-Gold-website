@@ -185,6 +185,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
           </button>
           <Link 
             to="/contact"
+            state={{ product: name, weight: weight }}
             className="flex-1 bg-[#E02B2B] hover:bg-[#111111] border border-[#E02B2B] hover:border-[#111111] text-white text-[10px] font-black uppercase tracking-widest py-3 px-2 transition-all duration-300 shadow-sm hover:shadow-md rounded-md text-center flex items-center justify-center"
           >
             Enquiry
@@ -280,6 +281,7 @@ const ProductCard = ({ name, weight, price, bestSeller, image }) => {
                 <div className="mt-5">
                   <Link 
                     to="/contact"
+                    state={{ product: name, weight: weight }}
                     className="w-full bg-[#E02B2B] hover:bg-[#111111] border border-[#E02B2B] hover:border-[#111111] text-white text-[11px] font-black uppercase tracking-widest py-3 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                   >
                     Send Product Enquiry

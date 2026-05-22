@@ -57,13 +57,18 @@ const About = () => (
           <span className="block text-[#0B6E3F]">PV Gold</span>
         </h2>
 
+        {/* Subheading */}
+        <h3 className="text-2xl md:text-3xl font-bold text-[#0B6E3F] tracking-tight -mt-2">
+          Pure Grain Pure Life
+        </h3>
+
         {/* Description Text */}
         <p className="text-gray-500 font-medium leading-relaxed">
-          PV Gold – Pure Grain, Pure Life is a trusted wholesaler and retailer of everyday staples, specializing in premium flours (atta/maida), sooji. We source directly from reliable mills and growers, ensuring consistent quality, clean processing, and competitive pricing. Our product range serves families, kirana stores, supermarkets, HORECA, and bulk buyers, with pack sizes from consumer pouches to wholesale sacks. With streamlined procurement, hygienic packaging, and on-time delivery.
+          PV Gold – Pure Grain Pure Life is a trusted wholesaler and retailer of everyday staples, specializing in premium flours (atta/maida), sooji. We source directly from reliable mills and growers, ensuring consistent quality, clean processing, and competitive pricing. Our product range serves families, kirana stores, supermarkets, HORECA, and bulk buyers, with pack sizes from consumer pouches to wholesale sacks. With streamlined procurement, hygienic packaging, and on-time delivery.
         </p>
 
         <p className="text-gray-500 font-medium leading-relaxed">
-          PV Gold focuses on freshness, nutrition, and value. Guided by a “Pure Grain, Pure Life” promise, we provide transparent specifications, responsive customer support, and steady supply—helping partners and households stock better, eat better, and live better.
+          PV Gold focuses on freshness, nutrition, and value. Guided by a “Pure Grain Pure Life” promise, we provide transparent specifications, responsive customer support, and steady supply—helping partners and households stock better, eat better, and live better.
         </p>
 
         {/* Features Row */}

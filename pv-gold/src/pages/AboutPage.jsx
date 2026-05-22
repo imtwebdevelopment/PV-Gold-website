@@ -3,7 +3,7 @@ import About from '../sections/About';
 import { Building2, MapPin, PhoneCall } from 'lucide-react';
 
 const AboutPage = () => (
-  <div className="pt-32 pb-20">
+  <div className="pt-[115px] lg:pt-[155px] pb-20">
     <About />
 
     {/* Official Packer & Marketer Info Card */}
@@ -47,8 +47,10 @@ const AboutPage = () => (
                 <div>
                   <span className="text-xs font-black uppercase tracking-[0.2em] text-[#FFB800] block mb-1">Registered Address</span>
                   <p className="text-gray-500 font-semibold text-sm leading-relaxed">
-                    Francis Building, Karnataka Layout,<br />
-                    Indranagar Main Road, Tiptur - 572 201.
+                    Francis Building,<br />
+                    Karnataka Layout,<br />
+                    Indranagar Main Road,<br />
+                    Tiptur - 572 201.
                   </p>
                 </div>
               </div>

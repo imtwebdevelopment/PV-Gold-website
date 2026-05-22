@@ -34,7 +34,7 @@ const ProductsPage = () => {
     : products.filter(p => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen pt-32 pb-20 relative bg-white overflow-hidden">
+    <div className="min-h-screen pt-[115px] lg:pt-[155px] pb-20 relative bg-white overflow-hidden">
       {/* Suitable Product Background */}
       <div className="absolute top-0 left-0 w-full h-[800px] z-0 opacity-20 pointer-events-none">
          <img src={productsBg} className="w-full h-full object-cover" alt="bg" />

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import aboutBg from '../assets/about-bg-suitable.png';
 
 const ContactPage = () => (
-  <div className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-white">
+  <div className="relative min-h-screen pt-[115px] lg:pt-[155px] pb-20 overflow-hidden bg-white">
     {/* Full Page Suitable Background Texture */}
     <div
       className="absolute inset-0 z-0 opacity-40 bg-fixed"

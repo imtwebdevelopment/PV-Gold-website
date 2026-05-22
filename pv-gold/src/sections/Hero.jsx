@@ -90,8 +90,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full bg-transparent overflow-hidden"
-      style={{ marginTop: '135px' }}
+      className="relative w-full bg-transparent overflow-hidden mt-[95px] lg:mt-[135px]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

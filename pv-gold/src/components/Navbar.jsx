@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Facebook, Twitter, Instagram } from './SocialIcons';
 import logo from '../assets/PV Gold-logo.jpeg';
 
@@ -83,7 +83,7 @@ const Navbar = () => {
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
 
-            09:00 am - 10:00 pm
+            Monday to Saturday (9 AM - 6 PM)
           </span>
         </div>
 
@@ -94,26 +94,32 @@ const Navbar = () => {
           </span>
 
           <div className="flex items-center gap-3">
-            <Link
-              to="#"
+            <a
+              href="https://www.facebook.com/profile.php?id=61590377008023"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-black transition-colors transform hover:scale-110"
             >
               <Facebook size={14} fill="currentColor" />
-            </Link>
+            </a>
 
-            <Link
-              to="#"
+            <a
+              href="https://x.com/pvgold_123"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-black transition-colors transform hover:scale-110"
             >
               <Twitter size={14} fill="currentColor" />
-            </Link>
+            </a>
 
-            <Link
-              to="#"
+            <a
+              href="https://www.instagram.com/pvgold2026/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-black transition-colors transform hover:scale-110"
             >
               <Instagram size={14} />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -179,12 +185,7 @@ const Navbar = () => {
           {/* Right Section */}
           <div className="flex items-center gap-0 h-full">
 
-            {/* Search */}
-            <div className="hidden sm:flex items-center gap-6 px-6 h-full">
-              <button className="text-white hover:text-[#E02B2B] transition-all duration-300 hover:scale-110">
-                <Search size={18} />
-              </button>
-            </div>
+
 
             {/* Enquiry Button */}
             <Link
@@ -259,12 +260,7 @@ const Navbar = () => {
                   Contact Us
                 </Link>
 
-                {/* Search Mobile */}
-                <div className="flex items-center gap-6 pt-2">
-                  <button className="text-white hover:text-[#E02B2B] transition-colors flex items-center gap-2 text-sm font-bold">
-                    <Search size={18} /> Search
-                  </button>
-                </div>
+
 
                 {/* Mobile Button */}
                 <Link
