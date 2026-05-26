@@ -5,15 +5,10 @@ import { Link } from 'react-router-dom';
 
 import gallary1 from '../assets/Gallary1.jpeg';
 import gallary2 from '../assets/Gallary2.jpeg';
-import gallary3 from '../assets/Gallary3.jpeg';
 import gallary4 from '../assets/Gallary4.jpeg';
 import gallary5 from '../assets/Gallary5.jpeg';
-import gallary6 from '../assets/Gallary6.jpeg';
 import gallary7 from '../assets/Gallary7.jpeg';
-import gallary8 from '../assets/Gallary8.jpeg';
 import gallary9 from '../assets/Gallary9.jpeg';
-import gallary10 from '../assets/Gallary10.jpeg';
-import gallary11 from '../assets/Gallary11.jpeg';
 
 const Gallery = ({ isDedicated = false }) => {
   const [activeImage, setActiveImage] = useState(null);
@@ -21,15 +16,10 @@ const Gallery = ({ isDedicated = false }) => {
   const images = [
     { src: gallary1, span: "lg:col-span-4", title: "Premium Grains Quality" },
     { src: gallary2, span: "lg:col-span-8", title: "Flour Processing Excellence" },
-    { src: gallary3, span: "lg:col-span-6", title: "State-of-the-Art Milling" },
     { src: gallary4, span: "lg:col-span-6", title: "Hygienic Packaging Line" },
     { src: gallary5, span: "lg:col-span-4", title: "Strict Quality Control" },
-    { src: gallary6, span: "lg:col-span-4", title: "Bulk Sacks Warehousing" },
     { src: gallary7, span: "lg:col-span-4", title: "Ready-to-Ship Logistics" },
-    { src: gallary8, span: "lg:col-span-6", title: "Precision Weighing Standards" },
     { src: gallary9, span: "lg:col-span-6", title: "Hygienic Heat Sealing" },
-    { src: gallary10, span: "lg:col-span-8", title: "Chakki Fresh Atta Bagging" },
-    { src: gallary11, span: "lg:col-span-4", title: "Mass Packing & Sorting Floor" },
   ];
 
   return (
@@ -50,7 +40,7 @@ const Gallery = ({ isDedicated = false }) => {
           </h2>
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance] box-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {images.map((img, i) => (
             <motion.div
               key={i}
@@ -59,7 +49,7 @@ const Gallery = ({ isDedicated = false }) => {
               viewport={{ once: true }}
               transition={{ delay: (i % 3) * 0.1, duration: 0.6 }}
               onClick={() => setActiveImage(img)}
-              className="relative mb-6 break-inside-avoid rounded-xl overflow-hidden group cursor-pointer border-2 border-[#E02B2B]/60 hover:border-[#E02B2B] transition-colors duration-300 shadow-[0_0_10px_rgba(224,43,43,0.15)] hover:shadow-[0_0_20px_rgba(224,43,43,0.4)] bg-[#1a1a1a]"
+              className="relative rounded-xl overflow-hidden group cursor-pointer border-2 border-[#E02B2B]/60 hover:border-[#E02B2B] transition-colors duration-300 shadow-[0_0_10px_rgba(224,43,43,0.15)] hover:shadow-[0_0_20px_rgba(224,43,43,0.4)] bg-[#1a1a1a]"
             >
               <img src={img.src} alt={img.title} className="w-full h-auto block transition-transform duration-1000 group-hover:scale-105" />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-white">
