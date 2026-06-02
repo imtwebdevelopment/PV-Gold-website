@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-import banner1 from '../assets/Website Banner-01.jpg.jpeg';
-import banner2 from '../assets/Website Banner-02.jpg.jpeg';
-import banner3 from '../assets/Website Banner-03.jpg.jpeg';
-import banner4 from '../assets/Website Banner-04.jpg.jpeg';
-import banner5 from '../assets/Website Banner-05.jpg.jpeg';
-import banner6 from '../assets/Website Banner-06.jpg.jpeg';
-import banner7 from '../assets/Website Banner-07.jpg.jpeg';
-import banner8 from '../assets/Website Banner-08.jpg.jpeg';
+import banner1 from '../assets/Website Banner-01_8x3.jpg';
+import banner2 from '../assets/Website Banner-02_8x3.jpg';
+import banner3 from '../assets/Website Banner-03_8x3.jpg';
+//import banner4 from '../assets/Website Banner-04_8x3.jpg';
+import banner5 from '../assets/Website Banner-05_8x3.jpg';
+import banner6 from '../assets/Website Banner-06_8x3.jpg';
+import banner7 from '../assets/Website Banner-07_8x3.jpg';
+import banner8 from '../assets/Website Banner-08_8x3.jpg';
 
 const banners = [
   banner1,
   banner2,
   banner3,
-  banner4,
+  //banner4,
   banner5,
   banner6,
   banner7,
@@ -94,8 +94,8 @@ const Hero = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Main Carousel Wrapper - aspect ratio is locked to 16:9 to perfectly fit the banners without cropping */}
-      <div className="relative w-full overflow-hidden aspect-[16/9] h-auto bg-black">
+      {/* Main Carousel Wrapper - aspect ratio is locked to 8:3 to perfectly fit the banners without cropping */}
+      <div className="relative w-full overflow-hidden aspect-[8/3] h-auto bg-black">
         <AnimatePresence initial={false} custom={direction} mode="sync">
           <motion.div
             key={currentIndex}
