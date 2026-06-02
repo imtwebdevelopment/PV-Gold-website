@@ -22,7 +22,7 @@ const products = [
   { id: 5, name: "Gram Flour", category: "Flours", price: "40 - 80", weight: "500G | 1KG", image: imgGramFlour, bestSeller: true },
   { id: 6, name: "Bangalore Rawa", category: "Rawa", price: "45 - 90", weight: "500G | 1KG", image: imgBangaloreRawa },
   { id: 7, name: "Avalakki", category: "Grains", price: "50 - 100", weight: "500G | 1KG", image: imgAvalakki },
-  { id: 8, name: "Wheat Flour", category: "Flours", price: "65 - 320", weight: "1KG | 5KG", image: imgWheatFlour, bestSeller: true }
+  { id: 8, name: "Wheat Flour", category: "Flours", price: "65 - 320", weight: "500G | 1KG | 5KG", image: imgWheatFlour, bestSeller: true }
 ];
 
 const ProductsPage = () => {

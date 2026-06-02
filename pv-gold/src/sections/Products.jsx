@@ -21,7 +21,7 @@ const Products = () => {
     { name: "Gram Flour", weight: "500G | 1KG", price: "40 - 80", bestSeller: true, image: imgGramFlour },
     { name: "Bangalore Rawa", weight: "500G | 1KG", price: "45 - 90", image: imgBangaloreRawa },
     { name: "Avalakki", weight: "500G | 1KG", price: "50 - 100", image: imgAvalakki },
-    { name: "Wheat Flour", weight: "1KG | 5KG", price: "65 - 320", bestSeller: true, image: imgWheatFlour }
+    { name: "Wheat Flour", weight: "500G | 1KG | 5KG", price: "65 - 320", bestSeller: true, image: imgWheatFlour }
   ];
 
   return (
