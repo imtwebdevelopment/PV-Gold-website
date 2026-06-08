@@ -54,12 +54,7 @@ const ReelCard = ({ video, index, onClick }) => {
         </div>
       </div>
 
-      {/* Bottom Content Overlays */}
-      <div className="absolute bottom-0 inset-x-0 p-6 flex flex-col justify-end pointer-events-none">
-        <h3 className="text-xl font-bold text-white group-hover:text-[#E02B2B] transition-colors duration-300">
-          {video.title}
-        </h3>
-      </div>
+
     </motion.div>
   );
 };
@@ -84,13 +79,13 @@ const Videos = () => {
 
   return (
     <section id="videos" className="relative py-24 px-6 md:px-12 bg-[#161616] overflow-hidden border-t-8 border-[#E02B2B]">
-      
+
       {/* Decorative Red Accent */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#E02B2B] rounded-full blur-[100px] opacity-10 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#E02B2B] rounded-full blur-[100px] opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -158,17 +153,7 @@ const Videos = () => {
                 />
               </div>
 
-              {/* Title & Description Label */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 }}
-                className="mt-6 text-center max-w-sm px-4"
-              >
-                <h3 className="text-xl font-black text-white uppercase tracking-wider">
-                  {activeVideo.title}
-                </h3>
-              </motion.div>
+
             </motion.div>
           </div>
         )}
