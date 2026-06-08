@@ -1,6 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X, Film } from 'lucide-react';
+
+const ReelCard = ({ video, index, onClick }) => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.log("Playback play interrupted:", err);
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.15, duration: 0.7 }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={onClick}
+      className="group relative rounded-2xl overflow-hidden cursor-pointer border-2 border-[#E02B2B]/40 hover:border-[#E02B2B] bg-[#111111] transition-all duration-300 shadow-[0_0_15px_rgba(224,43,43,0.15)] hover:shadow-[0_0_30px_rgba(224,43,43,0.4)] w-full max-w-sm mx-auto aspect-[9/16]"
+    >
+      {/* Video Element */}
+      <video
+        ref={videoRef}
+        src={video.src}
+        preload="auto"
+        loop
+        muted
+        playsInline
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-95 transition-opacity duration-500"
+      />
+
+      {/* Dark Gradient Overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 group-hover:via-black/20 transition-all duration-500 pointer-events-none" />
+
+      {/* Floating Play Indicator (fades out when playing) */}
+      <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-300 ${isPlaying ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}>
+        <div className="w-16 h-16 rounded-full bg-[#E02B2B]/90 text-white flex items-center justify-center shadow-lg backdrop-blur-sm">
+          <Play size={24} className="fill-current ml-1" />
+        </div>
+      </div>
+
+      {/* Bottom Content Overlays */}
+      <div className="absolute bottom-0 inset-x-0 p-6 flex flex-col justify-end pointer-events-none">
+        <h3 className="text-xl font-bold text-white group-hover:text-[#E02B2B] transition-colors duration-300">
+          {video.title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+};
 
 const Videos = () => {
   const [activeVideo, setActiveVideo] = useState(null);
@@ -8,21 +70,15 @@ const Videos = () => {
   const videos = [
     {
       src: "/videos/video-1.mp4",
-      title: "Advanced Grains Processing",
-      description: "Witness our state-of-the-art milling and sorting technology in full operation.",
-      duration: "0:36"
+      title: "Advanced Grains Processing"
     },
     {
       src: "/videos/video-2.mp4",
-      title: "Precision Flour Packaging",
-      description: "Automated, ultra-hygienic packing lines sealing in freshness and quality.",
-      duration: "0:25"
+      title: "Precision Flour Packaging"
     },
     {
       src: "/videos/video-3.mp4",
-      title: "Rigorous Quality Inspection",
-      description: "Our dedicated testing processes ensuring only the finest grains proceed.",
-      duration: "0:30"
+      title: "Rigorous Quality Inspection"
     }
   ];
 
@@ -45,64 +101,19 @@ const Videos = () => {
             Why Choose Us
           </h2>
           <p className="mt-4 text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-            Take a virtual tour of our premium grains processing unit and see how we deliver unmatched quality at every step.
+            Hover over any reel to see our processing unit in action, and click to view in full-screen.
           </p>
         </div>
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Reels Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {videos.map((video, i) => (
-            <motion.div
+            <ReelCard
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
+              video={video}
+              index={i}
               onClick={() => setActiveVideo(video)}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer border-2 border-[#E02B2B]/40 hover:border-[#E02B2B] bg-[#111111] transition-all duration-300 shadow-[0_0_15px_rgba(224,43,43,0.1)] hover:shadow-[0_0_25px_rgba(224,43,43,0.3)] flex flex-col justify-between h-full"
-            >
-              {/* Video Thumbnail Wrapper */}
-              <div className="relative aspect-video overflow-hidden bg-black flex items-center justify-center">
-                <video
-                  src={video.src}
-                  preload="metadata"
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
-                />
-                
-                {/* Play Overlay */}
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#E02B2B] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Play size={24} className="fill-current ml-1" />
-                  </div>
-                </div>
-
-                {/* Duration Badge */}
-                <div className="absolute bottom-3 right-3 bg-black/80 px-2.5 py-1 rounded-md text-[10px] font-bold text-white uppercase tracking-wider">
-                  {video.duration} MIN
-                </div>
-              </div>
-
-              {/* Video Info Card */}
-              <div className="p-6 flex-grow flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#E02B2B] transition-colors duration-300">
-                    {video.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {video.description}
-                  </p>
-                </div>
-                
-                <div className="mt-6 flex items-center text-[#E02B2B] font-black text-xs uppercase tracking-widest group-hover:translate-x-2 transition-transform duration-300">
-                  <span>Watch Video</span>
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
-            </motion.div>
+            />
           ))}
         </div>
       </div>
@@ -126,7 +137,7 @@ const Videos = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-5xl w-full flex flex-col items-center z-10"
+              className="relative max-w-lg w-full flex flex-col items-center z-10"
             >
               {/* Close Button */}
               <button
@@ -136,14 +147,14 @@ const Videos = () => {
                 <X size={20} />
               </button>
 
-              {/* Video Player */}
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl bg-black">
+              {/* Video Player (Vertical Reels Aspect Ratio inside lightbox too) */}
+              <div className="relative w-full aspect-[9/16] max-h-[80vh] rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl bg-black">
                 <video
                   src={activeVideo.src}
                   controls
                   autoPlay
                   playsInline
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
@@ -152,14 +163,11 @@ const Videos = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
-                className="mt-6 text-center max-w-2xl px-4"
+                className="mt-6 text-center max-w-sm px-4"
               >
-                <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-wider">
+                <h3 className="text-xl font-black text-white uppercase tracking-wider">
                   {activeVideo.title}
                 </h3>
-                <p className="text-gray-400 text-xs md:text-sm mt-2">
-                  {activeVideo.description}
-                </p>
               </motion.div>
             </motion.div>
           </div>
